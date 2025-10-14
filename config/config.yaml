@@ -26,8 +26,8 @@ data_transformation: # this is subfolder inside artifacts where data transformat
 
 model_trainer: # this is subfolder inside artifacts where model trainer related folder and files will be created
   root_dir: artifacts/model_trainer # this is main folder inside model trainer where all other folder and files will be created
-  train_data_path: artifacts/data_transformation/train.csv # this is path where train data is present which will be used for training the model
-  test_data_path: artifacts/data_transformation/test.csv # this is path where test data is present which will be used for testing the model
+  train_data_path: artifacts/data_transformation/train_scaled.csv # this is path where train data is present which will be used for training the model
+  test_data_path: artifacts/data_transformation/test_scaled.csv # this is path where test data is present which will be used for testing the model
   model_name: model.joblib # this is path where trained model will be saved
 
 

@@ -1,7 +1,8 @@
 
 from mlflow_ml.constants import *
 from mlflow_ml.utils.common import read_yaml, create_directories
-from mlflow_ml.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from mlflow_ml.entity.config_entity import (DataIngestionConfig, DataValidationConfig,
+                                            DataTransformationConfig, ModelTrainerConfig)
 
 # Configuration Manager
 # This class will read the config.yaml and params.yaml file and provide the necessary configuration for different components of the project
@@ -45,3 +46,35 @@ class ConfigurationManager:
             all_schema=schema,
         )
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+
+        # 1. Extract target column name from schema
+        target_column_name = self.schema.TARGET_COLUMN.name 
+
+        create_directories([config.root_dir])
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            target_column=target_column_name
+        )
+        return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=Path(config.root_dir),
+            train_data_path=Path(config.train_data_path),
+            test_data_path=Path(config.test_data_path),
+            model_name=config.model_name,
+            alpha=self.params.ElasticNet.alpha,
+            l1_ratio=self.params.ElasticNet.l1_ratio,
+            # random_state=self.random_state, this is default so not required here, if want to pass then update param.yaml with random state and remove default from entity
+            target_column=self.schema.TARGET_COLUMN.name
+        )
+
+        return model_trainer_config
