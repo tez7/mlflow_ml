@@ -1,0 +1,45 @@
+# this is main config file where all the configuration related to project will be saved
+
+artifacts_root: artifacts # this is main folder where all other folder will be created inside this
+
+
+data_ingestion: # this is subfolder inside artifacts where data ingestion related folder and files will be created
+  root_dir: artifacts/data_ingestion # this is main folder inside data ingestion where all other folder and files will be created
+  source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/winequality-data.zip # this is url from where data will be downloaded
+  local_data_file: artifacts/data_ingestion/data.zip # this is path where zip file will be saved after downloading
+  unzip_dir: artifacts/data_ingestion # this is path where zip file will be unzipped
+
+
+
+data_validation: # this is subfolder inside artifacts where data validation related folder and files will be created
+  root_dir: artifacts/data_validation # this is main folder inside data validation where all other folder and files will be created
+  unzip_data_dir: artifacts/data_ingestion/winequality-red.csv # this is path where unzipped file is present which will be validated
+  STATUS_FILE: artifacts/data_validation/status.txt # this is path where status of validation will be saved
+
+
+
+data_transformation: # this is subfolder inside artifacts where data transformation related folder and files will be created
+  root_dir: artifacts/data_transformation # this is main folder inside data transformation where all other folder and files will be created
+  data_path: artifacts/data_ingestion/winequality-red.csv # this is path where unzipped file is present which will be transformed
+
+
+
+model_trainer: # this is subfolder inside artifacts where model trainer related folder and files will be created
+  root_dir: artifacts/model_trainer # this is main folder inside model trainer where all other folder and files will be created
+  train_data_path: artifacts/data_transformation/train.csv # this is path where train data is present which will be used for training the model
+  test_data_path: artifacts/data_transformation/test.csv # this is path where test data is present which will be used for testing the model
+  model_name: model.joblib # this is path where trained model will be saved
+
+
+
+model_evaluation: # this is subfolder inside artifacts where model evaluation related folder and files will be created
+  root_dir: artifacts/model_evaluation # this is main folder inside model evaluation where all other folder and files will be created
+  test_data_path: artifacts/data_transformation/test.csv # this is path where test data is present which will be used for evaluating the model
+  model_path: artifacts/model_trainer/model.joblib # this is path where trained model is present which will be evaluated
+  metric_file_name: artifacts/model_evaluation/metrics.json # this is path where metrics of model will be saved
+
+
+
+
+
+
