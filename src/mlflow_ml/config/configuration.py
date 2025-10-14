@@ -1,7 +1,7 @@
 
 from mlflow_ml.constants import *
 from mlflow_ml.utils.common import read_yaml, create_directories
-from mlflow_ml.entity.config_entity import DataIngestionConfig
+from mlflow_ml.entity.config_entity import DataIngestionConfig, DataValidationConfig
 
 # Configuration Manager
 # This class will read the config.yaml and params.yaml file and provide the necessary configuration for different components of the project
@@ -33,13 +33,15 @@ class ConfigurationManager:
 
         return data_ingestion_config
     
-    # def get_data_validation_config(self):
-    #     config = self.config.data_validation
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+        schema = self.schema.COLUMNS
 
-    #     create_directories([Path(config.root_dir)])
-    #     data_validation_config = {
-    #         "root_dir": Path(config.root_dir),
-    #         "unzip_data_dir": Path(config.unzip_data_dir),
-    #         "STATUS_FILE": Path(config.STATUS_FILE)
-    #     }
-    #     return data_validation_config
+        create_directories([config.root_dir])
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            STATUS_FILE=config.STATUS_FILE,
+            unzip_data_dir = config.unzip_data_dir,
+            all_schema=schema,
+        )
+        return data_validation_config

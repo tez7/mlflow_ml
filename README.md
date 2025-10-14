@@ -5,8 +5,8 @@
 1. Update config.yaml
 2. Update schema.yaml #(columns you have in you data)
 3. Update params.yaml #(parameters - provide value here instead of run time)
-4. Update the entity #()
-5. Update the configuration manager in src config #()
+4. Update the config.entity #()
+5. Update the configuration manager(i.e configuration.py) in src config #()
 6. Update the components #(update data ingestion, validation)
 7. Update the pipeline #(all component will be implemented via pipeline)
 8. Update the main.py #()
