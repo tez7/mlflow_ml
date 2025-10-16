@@ -33,3 +33,14 @@ class ModelTrainerConfig:
     l1_ratio: float
     target_column: str
     random_state: int = 42
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    all_parameters: dict
+    metric_file_name: Path
+    target_column: str
+    mlflow_uri: str
+    random_state: int = 42

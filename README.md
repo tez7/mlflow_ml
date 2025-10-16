@@ -54,6 +54,7 @@ open up you local host and port
 ## MLflow
 
 [Documentation](https://mlflow.org/docs/latest/index.html)
+pip3 install mlflow
 
 
 ##### cmd
@@ -62,23 +63,30 @@ open up you local host and port
 ### dagshub
 [dagshub](https://dagshub.com/)
 
-MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow \
-MLFLOW_TRACKING_USERNAME=entbappy \
-MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 \
+
+MLFLOW_TRACKING_URI=https://dagshub.com/tez7/mlflow_ml.mlflow \
+MLFLOW_TRACKING_USERNAME=tez7 \
+MLFLOW_TRACKING_PASSWORD=be4cff9191bdcbbe7ccd24845978958de0c5553b \
+dagshub.init(repo_owner='7antez', repo_name='mlflow_ml', mlflow=True)
 python script.py
+
+import mlflow
+with mlflow.start_run():
+  mlflow.log_param('parameter name', 'value')
+  mlflow.log_metric('metric name', 1)
 
 Run this to export as env variables:
 
 ```bash
 
-export MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow
+export MLFLOW_TRACKING_URI=https://dagshub.com/tez7/mlflow_ml.mlflow
 
-export MLFLOW_TRACKING_USERNAME=entbappy 
+export MLFLOW_TRACKING_USERNAME=tez7 
 
-export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0
+export MLFLOW_TRACKING_PASSWORD=6b89a6bd0668b9beb9b3ba3484190e94c10ff4fb
 
 ```
-
+### """Experiment Tracking and Management: DagsHub integrates with MLflow to provide a remote server for logging, tracking, and comparing machine learning experiments. Users can view and manage experiment results, hyperparameters, and trained models through a built-in UI, facilitating analysis and reproducibility"""
 
 
 # AWS-CICD-Deployment-with-Github-Actions
