@@ -67,13 +67,8 @@ pip3 install mlflow
 MLFLOW_TRACKING_URI=https://dagshub.com/tez7/mlflow_ml.mlflow \
 MLFLOW_TRACKING_USERNAME=tez7 \
 MLFLOW_TRACKING_PASSWORD=be4cff9191bdcbbe7ccd24845978958de0c5553b \
-dagshub.init(repo_owner='7antez', repo_name='mlflow_ml', mlflow=True)
 python script.py
 
-import mlflow
-with mlflow.start_run():
-  mlflow.log_param('parameter name', 'value')
-  mlflow.log_metric('metric name', 1)
 
 Run this to export as env variables:
 
